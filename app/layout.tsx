@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "New Government Center, E.B. Magalona — Architecture Design Showcase",
   description:
-    "Architectural showcase by Erica Mae D. Pancho, BS Architecture 5C, LCC Bacolod. New Government Center for Enrique B. Magalona, Negros Occidental — Sheets A01–A05. Supervised by Ar. Gary Peter L. Bello, UAP.",
+    "Architectural showcase by Erica Mae D. Pancho, BS Architecture 5C, LCC Bacolod. New Government Center for Enrique B. Magalona, Negros Occidental — Drawings, sections, and an interactive building model. Supervised by Ar. Gary Peter L. Bello, UAP.",
 };
 
 export default function RootLayout({
@@ -22,7 +22,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased coastal-site">{children}</body>
     </html>
   );
 }

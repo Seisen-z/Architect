@@ -51,7 +51,7 @@ export default function GuideArrow({ annotation, isOpen, onToggle }: Props) {
       >
         <defs>
           <marker id={`arr-${annotation.id}`} markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-            <path d="M0,0 L6,3 L0,6 Z" fill="#a8875e" />
+            <path d="M0,0 L6,3 L0,6 Z" fill="#286c70" />
           </marker>
         </defs>
         <line
@@ -59,7 +59,7 @@ export default function GuideArrow({ annotation, isOpen, onToggle }: Props) {
           y1={dy < 0 ? Math.abs(ey) + 12 - 9 : dy > 0 ? 12 + 9 : 12}
           x2={dx < 0 ? 12 : dx > 0 ? Math.abs(ex) + 12 : 12}
           y2={dy < 0 ? 12 : dy > 0 ? Math.abs(ey) + 12 : 12}
-          stroke="#a8875e"
+          stroke="#286c70"
           strokeWidth="1.5"
           strokeDasharray="4 3"
           markerEnd={`url(#arr-${annotation.id})`}

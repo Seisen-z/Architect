@@ -1,154 +1,45 @@
-"use client";
-import { useEffect, useRef } from "react";
 import Image from "next/image";
 
 export default function HeroSection() {
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = contentRef.current;
-    if (!el) return;
-
-    // Staggered fade-in for child elements
-    const children = el.querySelectorAll("[data-animate]");
-    children.forEach((child, i) => {
-      const htmlChild = child as HTMLElement;
-      setTimeout(() => {
-        htmlChild.style.opacity = "1";
-        htmlChild.style.transform = "translateY(0)";
-      }, 300 + i * 150);
-    });
-  }, []);
-
   return (
-    <section id="hero" className="relative min-h-screen flex items-end justify-center overflow-hidden pb-24">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/123123123123.png"
-          alt="New Government Center — E.B. Magalona"
-          fill
-          className="object-cover object-center scale-105"
-          priority
-          quality={90}
-        />
-      </div>
-
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-stone-950/30 via-transparent to-stone-950/95 z-[1]" />
-      <div className="absolute inset-0 bg-gradient-to-r from-stone-950/40 via-transparent to-stone-950/40 z-[1]" />
-
-      {/* Large watermark title — "WOODLAND" style */}
-      <div className="absolute inset-0 flex items-center justify-center z-[2] pointer-events-none select-none overflow-hidden">
-        <h1
-          className="text-[7rem] sm:text-[10rem] md:text-[14rem] lg:text-[18rem] xl:text-[22rem] font-black leading-none whitespace-nowrap"
-          style={{
-            fontFamily: "'Inter', sans-serif",
-            color: "transparent",
-            WebkitTextStroke: "1px rgba(255,255,255,0.06)",
-            textShadow: "0 0 80px rgba(255,255,255,0.02)",
-            letterSpacing: "0.05em",
-          }}
-        >
-          MAGALONA
-        </h1>
-      </div>
-
-      {/* Main content — bottom aligned */}
-      <div ref={contentRef} className="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-12">
-        {/* Top badge */}
-        <div
-          data-animate
-          className="inline-flex items-center gap-3 mb-6 transition-all duration-700"
-          style={{ opacity: 0, transform: "translateY(20px)" }}
-        >
-          <span className="w-10 h-[1px] bg-architect-500/60" />
-          <span className="text-white/60 text-[10px] uppercase tracking-[0.3em]">
-            La Consolacion College Bacolod · BS Architecture 5C
-          </span>
-          <span className="w-10 h-[1px] bg-architect-500/60" />
+    <section id="hero" className="coastal-hero">
+      <div className="max-w-7xl mx-auto px-6 pt-36 pb-16 lg:pt-44 lg:pb-24">
+        <div className="flex items-center justify-between gap-4 mb-10 text-xs text-stone-500">
+          <span className="uppercase tracking-[0.22em]">Architecture thesis / Civic design</span>
+          <span className="hidden sm:block">E. B. Magalona, Negros Occidental</span>
         </div>
-
-        {/* Title */}
-        <h2
-          data-animate
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white leading-[1.1] mb-4 transition-all duration-700"
-          style={{ opacity: 0, transform: "translateY(20px)", fontFamily: "'Playfair Display', serif" }}
-        >
-          New Government Center
-          <span className="block text-architect-400 italic text-3xl sm:text-4xl md:text-5xl mt-2">
-            E.B. Magalona
-          </span>
-        </h2>
-
-        {/* Subtitle */}
-        <p
-          data-animate
-          className="text-white/50 text-sm md:text-base max-w-xl leading-relaxed mb-6 transition-all duration-700"
-          style={{ opacity: 0, transform: "translateY(20px)" }}
-        >
-          A three-storey civic landmark — annotated floor plans, site development,
-          elevations, and the complete design journey from brief to occupancy.
-        </p>
-
-        {/* Credits */}
-        <div
-          data-animate
-          className="flex flex-wrap items-center gap-x-6 gap-y-1 text-[10px] uppercase tracking-[0.2em] text-white/40 mb-8 transition-all duration-700"
-          style={{ opacity: 0, transform: "translateY(20px)" }}
-        >
-          <span>Proponent: <span className="text-white/60">Erica Mae D. Pancho</span></span>
-          <span className="hidden sm:inline text-white/20">|</span>
-          <span>Adviser: <span className="text-white/60">Ar. Gary Peter L. Bello, UAP</span></span>
-        </div>
-
-        {/* CTA Buttons */}
-        <div
-          data-animate
-          className="flex flex-wrap gap-4 mb-14 transition-all duration-700"
-          style={{ opacity: 0, transform: "translateY(20px)" }}
-        >
-          <a
-            href="#floor-plan"
-            className="px-8 py-3.5 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs uppercase tracking-[0.2em] hover:bg-white/20 hover:border-white/40 transition-all duration-300"
-          >
-            Explore Plans
-          </a>
-          <a
-            href="#process"
-            className="px-8 py-3.5 border border-white/15 text-white/70 text-xs uppercase tracking-[0.2em] hover:border-white/40 hover:text-white transition-all duration-300"
-          >
-            Design Process
-          </a>
-        </div>
-
-        {/* Stats row */}
-        <div
-          data-animate
-          className="flex flex-wrap gap-8 md:gap-12 pt-8 border-t border-white/10 transition-all duration-700"
-          style={{ opacity: 0, transform: "translateY(20px)" }}
-        >
-          {[
-            { value: "37,581", unit: "m²", label: "Total Lot Area" },
-            { value: "3", unit: "floors", label: "Building Height" },
-            { value: "A01–A05", unit: "", label: "Drawing Sheets" },
-            { value: "30+", unit: "offices", label: "Government Offices" },
-          ].map((s) => (
-            <div key={s.label}>
-              <div className="text-2xl md:text-3xl font-light text-white/90" style={{ fontFamily: "'Playfair Display', serif" }}>
-                {s.value}
-                {s.unit && <span className="text-sm text-white/40 ml-1">{s.unit}</span>}
-              </div>
-              <div className="text-[10px] uppercase tracking-[0.2em] text-white/35 mt-1">{s.label}</div>
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-4 items-center">
+          <div className="lg:col-span-5 relative z-10">
+            <p className="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-architect-500 mb-6"><span className="w-8 h-px bg-architect-500" /> A place for the community</p>
+            <h1 className="hero-title">New Government<br /><em>Center.</em></h1>
+            <p className="text-lg text-stone-400 mt-5">Enrique B. Magalona</p>
+            <p className="max-w-md text-sm sm:text-base text-stone-500 leading-relaxed mt-6">Explore a civic space designed around public service. Walk through the building, read the drawings, and discover how the proposal comes together.</p>
+            <div className="flex flex-wrap gap-3 mt-8">
+              <a className="coastal-primary" href="#floor-plan">Explore the building <span aria-hidden="true">↗</span></a>
+              <a className="coastal-secondary" href="#elevation">View the drawings <span aria-hidden="true">↓</span></a>
             </div>
-          ))}
+            <div className="mt-10 pt-6 border-t border-stone-800 max-w-md flex flex-wrap gap-x-8 gap-y-4 text-xs text-stone-500">
+              <div><span className="block text-[10px] uppercase tracking-widest mb-1">Design by</span><span className="text-stone-200">Erica Mae D. Pancho</span></div>
+              <div><span className="block text-[10px] uppercase tracking-widest mb-1">Academic adviser</span><span className="text-stone-200">Ar. Gary Peter L. Bello, UAP</span></div>
+            </div>
+          </div>
+          <figure className="hero-visual lg:col-span-7">
+            <div className="hero-orbit" aria-hidden="true" />
+            <span className="hero-watermark" aria-hidden="true">NGC</span>
+            <div className="relative aspect-[1.3] sm:aspect-[1.5] w-full">
+              <Image src="/images/ngc-model.png" alt="Three-dimensional model of the Government Center showing its courtyard, curved entrance canopy, parking and landscaping" fill priority sizes="(min-width: 1024px) 60vw, 100vw" className="object-contain mix-blend-multiply" />
+            </div>
+            <figcaption className="relative flex items-center justify-between gap-4 px-5 pb-5 text-[11px] text-stone-500"><span><span className="inline-block w-1.5 h-1.5 rounded-full bg-architect-500 mr-2" />The proposal in perspective</span><a href="#floor-plan" className="text-architect-500 underline underline-offset-4">Open 360° model ↗</a></figcaption>
+          </figure>
         </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
-        <span className="text-[9px] uppercase tracking-[0.3em] text-white/30">Scroll</span>
-        <div className="w-[1px] h-8 bg-gradient-to-b from-white/30 to-transparent animate-pulse" />
+        <div className="hero-facts grid grid-cols-2 lg:grid-cols-4 mt-12 lg:mt-16">
+          {[
+            ['37,581', 'm² site area', 'Space for civic life'],
+            ['03', 'building levels', 'Connected by a central courtyard'],
+            ['06', 'elevations & sections', 'Read the building from every side'],
+            ['360°', 'interactive model', 'Explore at your own pace'],
+          ].map(([value,label,note]) => <div key={label} className="p-5 sm:p-7"><div className="flex items-baseline gap-2"><span className="font-serif text-3xl sm:text-4xl text-stone-100">{value}</span><span className="text-xs text-stone-500">{label}</span></div><p className="text-xs text-stone-500 mt-2">{note}</p></div>)}
+        </div>
       </div>
     </section>
   );

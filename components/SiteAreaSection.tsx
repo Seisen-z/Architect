@@ -101,7 +101,7 @@ export default function SiteAreaSection() {
               <div className="h-0.5 bg-stone-800 mb-4 rounded-full">
                 <div
                   className={`h-full bg-gradient-to-r ${area.color} rounded-full transition-all duration-1000`}
-                  style={{ width: `${Math.min((area.value / 650) * 100, 100)}%` }}
+                  style={{ width: `${Math.min((area.value / (area.unit === "FAR" ? 1 : 37581)) * 100, 100)}%` }}
                 />
               </div>
 
@@ -111,42 +111,16 @@ export default function SiteAreaSection() {
           ))}
         </div>
 
-        {/* Proportional bar chart */}
-        <div className="mt-16">
-          <h3 className="text-sm uppercase tracking-widest text-stone-500 mb-6">Proportional Area Breakdown</h3>
-          <div className="flex rounded-sm overflow-hidden h-10">
-            {[
-              { label: "Built-up", pct: 47.7, color: "bg-architect-600" },
-              { label: "Garden", pct: 32.3, color: "bg-emerald-700" },
-              { label: "Paving", pct: 14.8, color: "bg-slate-600" },
-              { label: "Green Roof", pct: 5.2, color: "bg-lime-700" },
-            ].map((b) => (
-              <div
-                key={b.label}
-                className={`${b.color} relative group transition-all duration-500 hover:brightness-125`}
-                style={{ width: `${b.pct}%` }}
-                title={`${b.label}: ${b.pct}%`}
-              >
-                <span className="absolute inset-0 flex items-center justify-center text-xs font-medium text-white/80 group-hover:text-white transition-colors truncate px-1">
-                  {b.pct >= 12 ? `${b.label} ${b.pct}%` : ""}
-                </span>
-              </div>
-            ))}
-          </div>
-          <div className="flex flex-wrap gap-6 mt-4">
-            {[
-              { label: "Built-up", color: "bg-architect-600" },
-              { label: "Garden", color: "bg-emerald-700" },
-              { label: "Paving", color: "bg-slate-600" },
-              { label: "Green Roof", color: "bg-lime-700" },
-            ].map((b) => (
-              <div key={b.label} className="flex items-center gap-2">
-                <span className={`w-3 h-3 rounded-sm ${b.color}`} />
-                <span className="text-xs text-stone-500">{b.label}</span>
-              </div>
-            ))}
+        <div className="mt-10 glass p-6 sm:p-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6"><div><p className="text-xs uppercase tracking-widest text-architect-500 mb-2">The site at a glance</p><h3 className="font-serif text-2xl text-stone-100">Room for more than the building.</h3></div><p className="text-xs text-stone-500">Share of the 37,581 m² lot · current project figures</p></div>
+          <div className="grid sm:grid-cols-2 gap-x-10 gap-y-5">
+            {siteAreas.filter(item => item.unit !== 'FAR' && item.label !== 'Total Lot Area').map(item => <div key={item.label}>
+              <div className="flex justify-between gap-3 text-xs text-stone-400 mb-2"><span>{item.label}</span><span>{(item.value / 37581 * 100).toFixed(1)}%</span></div>
+              <div className="h-2 bg-stone-800 rounded-full overflow-hidden"><div className="h-full bg-architect-600 rounded-full" style={{width: (item.value / 37581 * 100) + '%'}} /></div>
+            </div>)}
           </div>
         </div>
+
       </div>
     </section>
   );

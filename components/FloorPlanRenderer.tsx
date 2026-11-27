@@ -65,21 +65,21 @@ export default function FloorPlanRenderer({
     >
       <defs>
         <pattern id="fpgrid" width="4" height="4" patternUnits="userSpaceOnUse">
-          <path d="M 4 0 L 0 0 0 4" fill="none" stroke="#1a1916" strokeWidth="0.4" />
+          <path d="M 4 0 L 0 0 0 4" fill="none" stroke="#adc5b6" strokeWidth="0.4" />
         </pattern>
       </defs>
 
       {/* Background layer */}
-      <rect x="-30" width="1280" height="650" fill="#0f0e0c" />
+      <rect x="-30" width="1280" height="650" fill="#e5ece1" />
       <rect x="-30" width="1280" height="650" fill={floorColor} />
       {showGrid && <rect x="-30" width="1280" height="650" fill="url(#fpgrid)" />}
 
       {/* Column grid A–Q */}
       {showGrid && showReferences && COL_GRID.map(([col, x]) => (
         <g key={col}>
-          <line x1={x} y1={26} x2={x} y2={580} stroke="#3f3a35" strokeWidth={0.5} strokeDasharray="3 3"/>
-          <circle cx={x} cy={16} r={10} fill="#0f0e0c" stroke="#3f3a35" strokeWidth={1}/>
-          <text x={x} y={20} textAnchor="middle" fill="#3f3a35" fontSize="10" fontFamily="Inter">{col}</text>
+          <line x1={x} y1={26} x2={x} y2={580} stroke="#52776c" strokeWidth={0.5} strokeDasharray="3 3"/>
+          <circle cx={x} cy={16} r={10} fill="#e5ece1" stroke="#52776c" strokeWidth={1}/>
+          <text x={x} y={20} textAnchor="middle" fill="#52776c" fontSize="10" fontFamily="Inter">{col}</text>
         </g>
       ))}
 
@@ -87,28 +87,28 @@ export default function FloorPlanRenderer({
       {showGrid && showReferences && ROWS.map(([row, y]) => {
         return (
           <g key={row}>
-            <line x1={40} y1={y} x2={1230} y2={y} stroke="#3f3a35" strokeWidth={0.5} strokeDasharray="3 3"/>
-            <circle cx={30} cy={y} r={10} fill="#0f0e0c" stroke="#3f3a35" strokeWidth={1}/>
-            <text x={30} y={y + 4} textAnchor="middle" fill="#3f3a35" fontSize="10" fontFamily="Inter">{row}</text>
+            <line x1={40} y1={y} x2={1230} y2={y} stroke="#52776c" strokeWidth={0.5} strokeDasharray="3 3"/>
+            <circle cx={30} cy={y} r={10} fill="#e5ece1" stroke="#52776c" strokeWidth={1}/>
+            <text x={30} y={y + 4} textAnchor="middle" fill="#52776c" fontSize="10" fontFamily="Inter">{row}</text>
           </g>
         );
       })}
 
       {/* Wing outlines */}
-      <rect x="50" y="30" width="258" height="530" fill="none" stroke="#2a2520" strokeWidth="1.5" strokeDasharray="4 4"/>
-      <rect x="308" y="30" width="593" height="530" fill="none" stroke="#2a2520" strokeWidth="1.5" strokeDasharray="4 4"/>
-      <rect x="901" y="30" width="266" height="530" fill="none" stroke="#2a2520" strokeWidth="1.5" strokeDasharray="4 4"/>
+      <rect x="50" y="30" width="258" height="530" fill="none" stroke="#9db9aa" strokeWidth="1.5" strokeDasharray="4 4"/>
+      <rect x="308" y="30" width="593" height="530" fill="none" stroke="#9db9aa" strokeWidth="1.5" strokeDasharray="4 4"/>
+      <rect x="901" y="30" width="266" height="530" fill="none" stroke="#9db9aa" strokeWidth="1.5" strokeDasharray="4 4"/>
 
       {/* Open court area */}
-      <rect x="460" y="30" width="295" height="395" fill="none" stroke="#1f1d1a" strokeWidth="1" strokeDasharray="4 4"/>
+      <rect x="460" y="30" width="295" height="395" fill="none" stroke="#9db9aa" strokeWidth="1" strokeDasharray="4 4"/>
 
       {/* North arrow */}
       {showGrid && showReferences && (
         <g transform="translate(28 228)">
-          <circle cx="0" cy="0" r="14" fill="none" stroke="#3f3a35" strokeWidth="1"/>
-          <path d="M0-11 L3 4 L0 1 L-3 4Z" fill="#a8875e"/>
-          <path d="M0-11 L-3 4 L0 1 L3 4Z" fill="#3f3a35"/>
-          <text x="0" y="22" textAnchor="middle" fill="#a8875e" fontSize="8" fontFamily="Inter" fontWeight="bold">N</text>
+          <circle cx="0" cy="0" r="14" fill="none" stroke="#52776c" strokeWidth="1"/>
+          <path d="M0-11 L3 4 L0 1 L-3 4Z" fill="#286c70"/>
+          <path d="M0-11 L-3 4 L0 1 L3 4Z" fill="#52776c"/>
+          <text x="0" y="22" textAnchor="middle" fill="#286c70" fontSize="8" fontFamily="Inter" fontWeight="bold">N</text>
         </g>
       )}
 
@@ -260,18 +260,18 @@ export default function FloorPlanRenderer({
       {/* Scale bar */}
       {showGrid && (
         <g transform="translate(300 640)">
-          <line x1="0" y1="0" x2="200" y2="0" stroke="#57514a" strokeWidth="1"/>
-          <line x1="0" y1="-4" x2="0" y2="4" stroke="#57514a" strokeWidth="1"/>
-          <line x1="100" y1="-4" x2="100" y2="4" stroke="#57514a" strokeWidth="1"/>
-          <line x1="200" y1="-4" x2="200" y2="4" stroke="#57514a" strokeWidth="1"/>
-          <text x="0" y="14" fill="#57514a" fontSize="8" fontFamily="Inter">0</text>
-          <text x="92" y="14" fill="#57514a" fontSize="8" fontFamily="Inter">10m</text>
-          <text x="190" y="14" fill="#57514a" fontSize="8" fontFamily="Inter">20m</text>
+          <line x1="0" y1="0" x2="200" y2="0" stroke="#476c64" strokeWidth="1"/>
+          <line x1="0" y1="-4" x2="0" y2="4" stroke="#476c64" strokeWidth="1"/>
+          <line x1="100" y1="-4" x2="100" y2="4" stroke="#476c64" strokeWidth="1"/>
+          <line x1="200" y1="-4" x2="200" y2="4" stroke="#476c64" strokeWidth="1"/>
+          <text x="0" y="14" fill="#476c64" fontSize="8" fontFamily="Inter">0</text>
+          <text x="92" y="14" fill="#476c64" fontSize="8" fontFamily="Inter">10m</text>
+          <text x="190" y="14" fill="#476c64" fontSize="8" fontFamily="Inter">20m</text>
         </g>
       )}
 
       {showGrid && (
-        <text x="850" y="640" fill="#3f3a35" fontSize="9" fontFamily="Inter">
+        <text x="850" y="640" fill="#52776c" fontSize="9" fontFamily="Inter">
           {activeFloor === "all" || activeFloor === null ? "Sheet A 03–05  ·  All Floors" : activeFloor === 1 ? "Sheet A 03  ·  Ground Floor Plan" : activeFloor === 2 ? "Sheet A 04  ·  Second Floor Plan" : "Sheet A 05  ·  Third Floor Plan"}  ·  Scale 1:200
         </text>
       )}

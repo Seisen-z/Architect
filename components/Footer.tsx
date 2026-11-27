@@ -10,7 +10,7 @@ export default function Footer() {
                 className="text-lg tracking-[0.35em] uppercase text-architect-200"
                 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600 }}
               >
-                WOOD<span className="font-light text-architect-400">LAND</span>
+                NGC<span className="font-light text-architect-400"> ARCHITECTURE</span>
               </span>
             </div>
 
@@ -40,9 +40,9 @@ export default function Footer() {
               {[
                 ["A 01 · General Info & Lot Data", "#hero"],
                 ["A 02 · Site Development Plan (1:500)", "#site-dev"],
-                ["A 03 · Ground Floor Plan (1:200)", "#floor-plan"],
-                ["A 04 · Second Floor Plan (1:200)", "#floor-plan"],
-                ["A 05 · Third Floor Plan (1:200)", "#floor-plan"],
+                ["A 03 · Ground Floor Plan (1:250)", "#floor-plan"],
+                ["A 04 · Second Floor Plan (1:250)", "#floor-plan"],
+                ["A 05 · Third Floor Plan (1:250)", "#floor-plan"],
                 ["Elevation & Section Views", "#elevation"],
                 ["Specifications", "#specifications"],
               ].map(([label, href]) => (

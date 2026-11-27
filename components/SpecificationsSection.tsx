@@ -112,20 +112,20 @@ export default function SpecificationsSection() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-stone-800">
             {[
-              { no: "A1.01", title: "Ground Floor Plan", scale: "1:100", status: "As Built" },
-              { no: "A1.02", title: "First Floor Plan",  scale: "1:100", status: "As Built" },
-              { no: "A2.01", title: "North Elevation",   scale: "1:100", status: "As Built" },
-              { no: "A2.02", title: "South Elevation",   scale: "1:100", status: "As Built" },
-              { no: "A2.03", title: "East Elevation",    scale: "1:100", status: "As Built" },
-              { no: "A2.04", title: "West Elevation",    scale: "1:100", status: "As Built" },
-              { no: "A3.01", title: "Section A–A",       scale: "1:50",  status: "As Built" },
-              { no: "A4.01", title: "Joinery Details",   scale: "1:20",  status: "For Construction" },
+              { no: "A01", title: "General Information & Lot Data", scale: "Reference", status: "Design proposal" },
+              { no: "A02", title: "Site Development Plan", scale: "1:500", status: "Design proposal" },
+              { no: "A03", title: "Ground Floor Plan", scale: "1:250", status: "Design proposal" },
+              { no: "A04", title: "Second Floor Plan", scale: "1:250", status: "Design proposal" },
+              { no: "A05", title: "Third Floor Plan", scale: "1:250", status: "Design proposal" },
+              { no: "A06", title: "Front & Left Elevations", scale: "1:250", status: "Design proposal" },
+              { no: "A07", title: "Rear & Right Elevations", scale: "1:250", status: "Design proposal" },
+              { no: "A08", title: "Building Sections", scale: "1:250", status: "Design proposal" },
             ].map((d) => (
               <div key={d.no} className="bg-stone-950 p-4">
                 <div className="flex items-center justify-between mb-1">
                   <span className="font-mono text-xs text-architect-500">{d.no}</span>
                   <span className={`text-[9px] px-1.5 py-0.5 rounded uppercase tracking-wider ${
-                    d.status === "As Built" ? "bg-emerald-900/40 text-emerald-500" : "bg-amber-900/40 text-amber-500"
+                    "bg-stone-900 text-architect-400"
                   }`}>
                     {d.status}
                   </span>

@@ -41,53 +41,14 @@ export default function SiteDevelopmentSection() {
           </div>
         </div>
 
-        {/* Timeline steps (horizontal scroll on mobile) */}
-        <div className="relative mb-12 overflow-x-auto pb-4">
-          {/* Connecting line */}
-          <div className="absolute top-7 left-0 right-0 h-0.5 bg-stone-800 z-0" />
-          {/* Progress line */}
-          <div
-            className="absolute top-7 left-0 h-0.5 bg-architect-600 z-0 transition-all duration-700"
-            style={{ width: `${((activeIdx + 1) / timelinePhases.length) * 100}%` }}
-          />
-
-          <div className="relative z-10 flex min-w-max gap-0">
-            {timelinePhases.map((p, i) => {
-              const isActive = p.id === activePhase;
-              const isPast = i <= activeIdx;
-              return (
-                <button
-                  key={p.id}
-                  id={`phase-${p.id}`}
-                  onClick={() => setActivePhase(p.id)}
-                  className="flex flex-col items-center gap-3 px-6 group focus:outline-none"
-                  style={{ minWidth: "120px" }}
-                >
-                  {/* Circle */}
-                  <div
-                    className={`w-14 h-14 rounded-full border-2 flex items-center justify-center transition-all duration-500 ${
-                      isActive
-                        ? "border-architect-500 bg-architect-600 text-stone-950 shadow-lg shadow-architect-900/50 scale-110"
-                        : isPast
-                        ? "border-architect-700 bg-architect-900/40 text-architect-500"
-                        : "border-stone-700 bg-stone-900 text-stone-600 group-hover:border-architect-600 group-hover:text-architect-400"
-                    }`}
-                  >
-                    {iconMap[p.icon]}
-                  </div>
-                  {/* Phase label */}
-                  <div className="text-center">
-                    <div className={`text-[10px] uppercase tracking-widest mb-0.5 ${isPast ? "text-architect-600" : "text-stone-600"}`}>
-                      {p.phase}
-                    </div>
-                    <div className={`text-xs font-medium leading-tight ${isActive ? "text-architect-300" : "text-stone-500"}`}>
-                      {p.title}
-                    </div>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-8" role="group" aria-label="Construction phases">
+          {timelinePhases.map((item, index) => (
+            <button key={item.id} id={`phase-${item.id}`} aria-pressed={activePhase === item.id} onClick={() => setActivePhase(item.id)}
+              className={`text-left p-4 rounded-xl border min-h-[130px] transition-colors ${activePhase === item.id ? 'bg-architect-600 border-architect-600 text-stone-950' : 'border-stone-700 text-stone-400 hover:bg-stone-850'}`}>
+              <span className="flex items-center justify-between mb-4"><span className="text-xs opacity-80">0{index + 1}</span>{iconMap[item.icon]}</span>
+              <span className="block text-xs leading-relaxed font-medium">{item.title}</span>
+            </button>
+          ))}
         </div>
 
         {/* Phase detail panel */}

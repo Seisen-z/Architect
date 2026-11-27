@@ -40,13 +40,14 @@ export default function ArchitectProcessSection() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* Steps list */}
-          <div className="lg:col-span-1 space-y-2">
-            {processsteps.map((step) => (
+          <div className="lg:col-span-1 min-w-0 space-y-2">
+            {processsteps.map((step, index) => (
               <button
                 key={step.id}
                 id={`process-step-${step.id}`}
+                aria-expanded={expanded === step.id}
                 onClick={() => setExpanded(expanded === step.id ? null : step.id)}
                 className={`w-full text-left flex items-center gap-4 p-4 border transition-all duration-300 rounded-sm group ${
                   expanded === step.id
@@ -62,7 +63,7 @@ export default function ArchitectProcessSection() {
                   }`}
                   style={{ fontFamily: "'Playfair Display', serif" }}
                 >
-                  {step.step}
+                  {index + 1}
                 </span>
                 <div className="min-w-0">
                   <div className={`text-sm font-semibold transition-colors ${expanded === step.id ? "text-architect-300" : "text-stone-300"}`}>
@@ -78,16 +79,16 @@ export default function ArchitectProcessSection() {
           </div>
 
           {/* Step detail */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 min-w-0">
             {processsteps.filter((s) => s.id === expanded).map((step) => (
               <div key={step.id} className="glass rounded-sm p-8 h-full animate-fade-in">
                 {/* Step header */}
-                <div className="flex items-start gap-5 mb-6">
+                <div className="flex flex-col sm:flex-row items-start gap-5 mb-6">
                   <div className="w-14 h-14 shrink-0 bg-architect-600/20 border border-architect-700/40 flex items-center justify-center text-architect-400 rounded-sm">
                     {iconMap[step.icon]}
                   </div>
                   <div>
-                    <span className="text-xs uppercase tracking-[0.25em] text-architect-600">Step {step.step} of {processsteps.length}</span>
+                    <span className="text-xs uppercase tracking-[0.25em] text-architect-600">Step {processsteps.indexOf(step) + 1} of {processsteps.length}</span>
                     <h3
                       className="font-serif text-2xl text-stone-100 mt-1"
                       style={{ fontFamily: "'Playfair Display', serif" }}
@@ -106,7 +107,7 @@ export default function ArchitectProcessSection() {
                 {/* Description */}
                 <p className="text-stone-400 text-sm leading-relaxed mb-8">{step.description}</p>
 
-                <div className="grid sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Tools */}
                   <div>
                     <h4 className="text-xs uppercase tracking-widest text-stone-600 mb-3 flex items-center gap-2">
@@ -140,17 +141,17 @@ export default function ArchitectProcessSection() {
 
                 {/* Step nav */}
                 <div className="flex gap-3 mt-8 pt-6 border-t border-stone-800">
-                  {processsteps.find((s) => s.step === step.step - 1) && (
+                  {processsteps[processsteps.indexOf(step) - 1] && (
                     <button
-                      onClick={() => setExpanded(processsteps.find((s) => s.step === step.step - 1)!.id)}
+                      onClick={() => setExpanded(processsteps[processsteps.indexOf(step) - 1]!.id)}
                       className="px-4 py-2 text-xs border border-stone-700 text-stone-400 hover:border-architect-600 hover:text-architect-400 transition-all"
                     >
                       ← Previous Step
                     </button>
                   )}
-                  {processsteps.find((s) => s.step === step.step + 1) && (
+                  {processsteps[processsteps.indexOf(step) + 1] && (
                     <button
-                      onClick={() => setExpanded(processsteps.find((s) => s.step === step.step + 1)!.id)}
+                      onClick={() => setExpanded(processsteps[processsteps.indexOf(step) + 1]!.id)}
                       className="px-4 py-2 text-xs border border-architect-700 text-architect-400 hover:bg-architect-700 hover:text-stone-950 transition-all ml-auto"
                     >
                       Next Step →
